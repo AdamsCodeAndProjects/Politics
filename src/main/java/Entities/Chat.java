@@ -56,7 +56,6 @@ public class Chat {
     }
 
     // Getters and Setters
-
     public int getChatId() {
         return chatId;
     }

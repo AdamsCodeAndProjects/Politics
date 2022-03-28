@@ -21,15 +21,15 @@ public class User {
         this.passcode = passcode;
     }
 
-    public User(int userId, String firstName, String lastName, String emailAddress, String username,
-                String dob) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.emailAddress = emailAddress;
-        this.username = username;
-        this.dob = dob;
-    }
+//    public User(int userId, String firstName, String lastName, String emailAddress, String username,
+//                String dob) {
+//        this.userId = userId;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.emailAddress = emailAddress;
+//        this.username = username;
+//        this.dob = dob;
+//    }
 
     public User(int userId, String firstName, String lastName, String emailAddress, String username, String passcode,
                 String userAboutMe, String dob, String imageFormat) {
@@ -120,7 +120,7 @@ public class User {
         return dob;
     }
 
-    public void setDob(long dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 

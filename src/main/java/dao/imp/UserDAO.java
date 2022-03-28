@@ -33,12 +33,15 @@ public class UserDAO implements UserDAOInt {
             rs.next();
             user.setUserId(rs.getInt("user_id"));
             return new User(
-                    rs.getInt("user_id"),
+                    rs.getInt("user_Id"),
                     rs.getString("first_name"),
                     rs.getString("last_name"),
                     rs.getString("email"),
                     rs.getString("username"),
-                    rs.getString("dob")
+                    rs.getString("passcode"),
+                    rs.getString("user_about_me"),
+                    rs.getString("dob"),
+                    rs.getString("image_format")
             );
     } catch (SQLException e){
         if(e.getMessage().contains("username")) {
@@ -64,12 +67,15 @@ public class UserDAO implements UserDAOInt {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 return new User(
-                        rs.getInt("user_id"),
+                        rs.getInt("user_Id"),
                         rs.getString("first_name"),
                         rs.getString("last_name"),
                         rs.getString("email"),
                         rs.getString("username"),
-                        rs.getString("dob")
+                        rs.getString("passcode"),
+                        rs.getString("user_about_me"),
+                        rs.getString("dob"),
+                        rs.getString("image_format")
                 );
             } else {
                 throw new UsernameOrPasscodeException("User Not Found");
@@ -95,7 +101,10 @@ public class UserDAO implements UserDAOInt {
                         rs.getString("last_name"),
                         rs.getString("email"),
                         rs.getString("username"),
-                        rs.getString("dob")
+                        rs.getString("passcode"),
+                        rs.getString("user_about_me"),
+                        rs.getString("dob"),
+                        rs.getString("image_format")
                 );
             } else {
                 throw new UserNotFound("User Not Found");
@@ -121,7 +130,10 @@ public class UserDAO implements UserDAOInt {
                                 rs.getString("last_name"),
                                 rs.getString("email"),
                                 rs.getString("username"),
-                                rs.getString("dob")
+                                rs.getString("passcode"),
+                                rs.getString("user_about_me"),
+                                rs.getString("dob"),
+                                rs.getString("image_format")
                         )
                 );
             }
