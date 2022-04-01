@@ -1,6 +1,5 @@
 package AppMain;
 
-import Controllers.AppController;
 import Controllers.UserController;
 import dao.imp.UserDAO;
 import io.javalin.Javalin;
@@ -23,10 +22,10 @@ public class MainApp {
         UserService userService = new UserService(userDAO);
         UserController userController = new UserController(userService);
 
-        AppController appController = new AppController(app, chatController, userController);
+//        AppController appController = new AppController(app, chatController, userController);
 
-        appController.createChatRoutes();
-        appController.createUserRoutes();
+//        appController.createChatRoutes();
+//        appController.createUserRoutes();
 
         app.start();
     }
