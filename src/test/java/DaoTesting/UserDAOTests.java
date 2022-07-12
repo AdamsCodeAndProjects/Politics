@@ -16,7 +16,7 @@ public class UserDAOTests {
     @Test
     void testRegisterUser() {
         String date = "03242022";
-        User newUser = new User(0, "Tim", "Sanders", "123@acs.com", "Test", "yoyoyo", "Im boring", "01021944","img");
+        User newUser = new User(0, "Tim", "Sanders", "123@acs.com", "Test", "yoyoyo", "Im boring", "01021944","img", 100);
         User newlyCreatedUser = userDAO.createNewUser(newUser);
         Assert.assertEquals(newlyCreatedUser.getFirstName(), "Tim");
     }
@@ -25,7 +25,7 @@ public class UserDAOTests {
     @Test
     void testDuplicateUsername() {
         try {
-            User newUser = new User(1, "Rick", "Sanders", "234@abc.com", "myUN", "nocando", "I like things","01012000", "imgsrc");
+            User newUser = new User(1, "Rick", "Sanders", "234@abc.com", "myUN", "nocando", "I like things","01012000", "imgsrc", 100);
             userDAO.createNewUser(newUser);
         } catch (DuplicateUsername e) {
             Assert.assertEquals("This username is already taken", e.getMessage());

@@ -13,12 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO implements UserDAOInt {
-
-
+    
     @Override
     public User createNewUser(User user) {
         try(Connection connection = ConnectionDB.createConnection()) {
-            String sql = "insert into user_table values(default, ?, ?, ?, ? ,?, ?, ?, ?)";
+            String sql = "insert into user_table values(default, ?, ?, ?, ? ,?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
@@ -28,6 +27,7 @@ public class UserDAO implements UserDAOInt {
             preparedStatement.setString(6, user.getUserAboutMe());
             preparedStatement.setString(7, user.getDob());
             preparedStatement.setString(8, user.getImageFormat());
+            preparedStatement.setInt(9, user.getPoliticalView());
             preparedStatement.execute();
             ResultSet rs = preparedStatement.getGeneratedKeys();
             rs.next();
@@ -41,7 +41,8 @@ public class UserDAO implements UserDAOInt {
                     rs.getString("passcode"),
                     rs.getString("user_about_me"),
                     rs.getString("dob"),
-                    rs.getString("image_format")
+                    rs.getString("image_format"),
+                    rs.getInt("politicalView")
             );
     } catch (SQLException e){
         if(e.getMessage().contains("username")) {
@@ -75,7 +76,8 @@ public class UserDAO implements UserDAOInt {
                         rs.getString("passcode"),
                         rs.getString("user_about_me"),
                         rs.getString("dob"),
-                        rs.getString("image_format")
+                        rs.getString("image_format"),
+                        rs.getInt("politicalView")
                 );
             } else {
                 throw new UsernameOrPasscodeException("User Not Found");
@@ -104,7 +106,8 @@ public class UserDAO implements UserDAOInt {
                         rs.getString("passcode"),
                         rs.getString("user_about_me"),
                         rs.getString("dob"),
-                        rs.getString("image_format")
+                        rs.getString("image_format"),
+                        rs.getInt("politicalView")
                 );
             } else {
                 throw new UserNotFound("User Not Found");
@@ -133,7 +136,8 @@ public class UserDAO implements UserDAOInt {
                                 rs.getString("passcode"),
                                 rs.getString("user_about_me"),
                                 rs.getString("dob"),
-                                rs.getString("image_format")
+                                rs.getString("image_format"),
+                                rs.getInt("politicalView")
                         )
                 );
             }
@@ -161,7 +165,8 @@ public class UserDAO implements UserDAOInt {
                         rs.getString("passcode"),
                         rs.getString("user_about_me"),
                         rs.getString("dob"),
-                        rs.getString("image_format")
+                        rs.getString("image_format"),
+                        rs.getInt("politicalView")
                 );
                 users.add(user);
             }

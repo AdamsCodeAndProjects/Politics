@@ -17,18 +17,20 @@ public class UserService implements UserServiceInt {
 
     @Override
     public User registerUserService(User user) {
-        if(user.getUsername().matches(".*\\s+.*")) {
+        if (user.getUsername().matches(".*\\s+.*")) {
             throw new UnallowedSpaces("No spaces allowed in username or password");
-        } else if (user.getPasscode().matches(".*\\s+.*")){
+        } else if (user.getPasscode().matches(".*\\s+.*")) {
             throw new UnallowedSpaces("No spaces allowed in username or password");
         } else if (user.getUsername().isEmpty() || user.getFirstName().isEmpty() || user.getLastName().isEmpty() ||
-                    user.getPasscode().isEmpty() || user.getEmailAddress().isEmpty() || user.getDob().isEmpty()) {
+                user.getPasscode().isEmpty() || user.getEmailAddress().isEmpty() || user.getDob().isEmpty()) {
             throw new BlankInputs("Please fill in all blanks");
         } else if (user.getUsername().length() > 20 || user.getFirstName().length() > 20 ||
                 user.getLastName().length() > 20 || user.getPasscode().length() > 20 || user.getEmailAddress().length() > 50 ||
                 user.getDob().length() > 10) {
             throw new TooManyChars("Too many characters");
-        } else {
+        } else if(user.getPoliticalView() > 100 || user.getPoliticalView() < 0) {
+            throw new OutOfRangeException("Your rating is out of range");
+        }  else {
             return this.userDAO.createNewUser(user);
         }
     }

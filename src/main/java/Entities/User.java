@@ -13,6 +13,7 @@ public class User {
     private String userAboutMe;
     private String dob;
     private String imageFormat;
+    private int politicalView;
 
     public User() {}
 
@@ -32,7 +33,7 @@ public class User {
 //    }
 
     public User(int userId, String firstName, String lastName, String emailAddress, String username, String passcode,
-                String userAboutMe, String dob, String imageFormat) {
+                String userAboutMe, String dob, String imageFormat, int politicalView) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,6 +43,7 @@ public class User {
         this.userAboutMe = userAboutMe;
         this.dob = dob;
         this.imageFormat = imageFormat;
+        this.politicalView = politicalView;
     }
 
     // Hash
@@ -50,12 +52,13 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return userId == user.userId && dob == user.dob && firstName.equals(user.firstName) && lastName.equals(user.lastName) && emailAddress.equals(user.emailAddress) && username.equals(user.username) && passcode.equals(user.passcode) && userAboutMe.equals(user.userAboutMe) && imageFormat.equals(user.imageFormat);
+        return userId == user.userId && Objects.equals(dob, user.dob) && firstName.equals(user.firstName) && lastName.equals(user.lastName) && emailAddress.equals(user.emailAddress) && username.equals(user.username) && passcode.equals(user.passcode)
+                && userAboutMe.equals(user.userAboutMe) && imageFormat.equals(user.imageFormat) && politicalView == user.politicalView;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, firstName, lastName, emailAddress, username, passcode, userAboutMe, dob, imageFormat);
+        return Objects.hash(userId, firstName, lastName, emailAddress, username, passcode, userAboutMe, dob, imageFormat, politicalView);
     }
 
     // Getters and Setters
@@ -130,5 +133,13 @@ public class User {
 
     public void setImageFormat(String imageFormat) {
         this.imageFormat = imageFormat;
+    }
+
+    public int getPoliticalView() {
+        return politicalView;
+    }
+
+    public void setPoliticalView(int politicalView) {
+        this.politicalView = politicalView;
     }
 }

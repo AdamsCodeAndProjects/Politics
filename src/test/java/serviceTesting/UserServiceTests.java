@@ -18,6 +18,8 @@ public class UserServiceTests {
     public static UserDAO userDAO = new UserDAO();
     public static UserServiceInt userService = new UserService(userDAO);
 
+    //  Create test for politicalView being out of range : 120 ||  -120
+
     static User userProfile;
     static User mockUserOne;
     static User mockUserTwo;
@@ -38,21 +40,21 @@ public class UserServiceTests {
     public void setup() {
         userDAO = Mockito.mock(UserDAO.class);
         userService = new UserService(userDAO);
-        mockUserOne = new User(0, "mocky", "mockinly", "mock@123.com", "moo", "pass", "hiya", "01011988", "img");
-        mockUserTwo = new User(1, "mocky", "mocker", "mocke@123.com", "riri", "pass", "hiya", "01021988", "img");
-        duplicateEmailUser = new User(0, "ben", "turkey", "sick@123.com", "moo", "passy", "hiya", "02011988", "img");
-        userProfile = new User(0, "Razor", "Ramon", "iwrestleforaliving@gmail.com", "ILoveToWrestle", "MySimplePasscode", "I enjoy the wrestling life", "04041999", "image");
-        badPasscode = new User(0, "Razor", "Ramon", "iwrestleforaliving@gmail.com", "ILove", "Wrong", "I enjoy the wrestling life", "04041999", "image");
-        userProfile2 = new User(1, "Razor", "Ramon", "iwrestleforaliving@gmail.com", "ILoveToWrestle", "MySimplePasscode", "I enjoy the wrestling life", "04041999", "image");
-        returnedProfile = new User(2, "Solomon", "Grundy", "solomon@gmail.com", "BornOnMonday", "Tuesday", "I have a poem", "04041999", "image");
-        otherProfile = new User(3, "Solomon", "Grundy", "solomon@gmail.com", "BornOnMonday", "Tuesday", "I have a poem", "04041999", "image");
-        badUsername = new User(0, "Solomon", "Grundy", "solomon@gmail.com", "IAmSolomonGrundy", "Tuesday", "I have a poem", "04041999", "image");
-        duplicateUsername = new User(0, "Dup", "Testing", "dup@email.com", "username", "password", "I like social media.", "04041999", "imagesrc");
-        usernameSpaces = new User(0, "User", "Testing", "space@email.com", "user name", "password", "I like social media.", "04041999", "imagesrc");
-        passwordSpaces = new User(0, "User", "Testing", "space2@email.com", "username", "password space", "I like social media.", "04041999", "imagesrc");
+        mockUserOne = new User(0, "mocky", "mockinly", "mock@123.com", "moo", "pass", "hiya", "01011988", "img", 50);
+        mockUserTwo = new User(1, "mocky", "mocker", "mocke@123.com", "riri", "pass", "hiya", "01021988", "img", 50);
+        duplicateEmailUser = new User(0, "ben", "turkey", "sick@123.com", "moo", "passy", "hiya", "02011988", "img", 50);
+        userProfile = new User(0, "Razor", "Ramon", "iwrestleforaliving@gmail.com", "ILoveToWrestle", "MySimplePasscode", "I enjoy the wrestling life", "04041999", "image", 50);
+        badPasscode = new User(0, "Razor", "Ramon", "iwrestleforaliving@gmail.com", "ILove", "Wrong", "I enjoy the wrestling life", "04041999", "image", 50);
+        userProfile2 = new User(1, "Razor", "Ramon", "iwrestleforaliving@gmail.com", "ILoveToWrestle", "MySimplePasscode", "I enjoy the wrestling life", "04041999", "image", 50);
+        returnedProfile = new User(2, "Solomon", "Grundy", "solomon@gmail.com", "BornOnMonday", "Tuesday", "I have a poem", "04041999", "image", 50);
+        otherProfile = new User(3, "Solomon", "Grundy", "solomon@gmail.com", "BornOnMonday", "Tuesday", "I have a poem", "04041999", "image", 50);
+        badUsername = new User(0, "Solomon", "Grundy", "solomon@gmail.com", "IAmSolomonGrundy", "Tuesday", "I have a poem", "04041999", "image", 50);
+        duplicateUsername = new User(0, "Dup", "Testing", "dup@email.com", "username", "password", "I like social media.", "04041999", "imagesrc", 50);
+        usernameSpaces = new User(0, "User", "Testing", "space@email.com", "user name", "password", "I like social media.", "04041999", "imagesrc", 50);
+        passwordSpaces = new User(0, "User", "Testing", "space2@email.com", "username", "password space", "I like social media.", "04041999", "imagesrc", 50);
         anotherList.add(userProfile);
         anotherList.add(userProfile2);
-        blankSpaces = new User(0, "Test", "", "email@testemail.com", "", "", "Social media is fun.", "04041999", "imagesrc");
+        blankSpaces = new User(0, "Test", "", "email@testemail.com", "", "", "Social media is fun.", "04041999", "imagesrc", 50);
     }
 
     //  ----------------------------------------  Mock TESTS  -------------------------------------------------
